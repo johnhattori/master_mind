@@ -41,13 +41,17 @@ if __name__ == '__main__':
     target = ['y', 'b', 'y', 'b']
     guess = ['y', 'y', 'y', 'b']
     score = score_guess(guess, target)
-    print(score)
+    print("%s\n%s\n%s\n" % (target, guess, score))
 
 
     target = ['r', 'b', 'y', 'b']
     guess = ['y', 'y', 'y', 'b']
     score = score_guess(guess, target)
-    print(score)
+    print("%s\n%s\n%s\n" % (target, guess, score))
 
+    target = ['r', 'y', 't', 'b']
+    guess = ['y', 'y', 't', 't']
+    score = score_guess(guess, target)
+    print("%s\n%s\n%s\n" % (target, guess, score))
     
 
