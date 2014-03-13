@@ -11,6 +11,7 @@ def generate_target(guess_size=4, num_color=6):
     target = []
     for guess in range(guess_size):
         color = random.randint(0, num_color-1)
+        # color = random.choice(guess_size)
         target.append(color)
     
     return target
