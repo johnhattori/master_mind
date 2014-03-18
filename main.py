@@ -2,6 +2,8 @@
 
 import random
 import collections
+import sys
+import os
 
 GUESS_SIZE = 4
 NUM_COLORS = 6
@@ -60,7 +62,43 @@ def draw_board(board):
     print(to_print)
     return to_print
 
+def is_valid_input(s):
+    colors = s.split(' ')
+    colors = [c.upper() for c in colors]
+    if len(colors) != GUESS_SIZE:
+        return False
+    allowed_colors = list(COLOR_NUM_MAP.keys())[:NUM_COLORS]
+    for c in colors:
+        if c not in allowed_colors: 
+            return False
+    return True
+
+def main():
+    t = generate_target()
+    b = []
+    for _ in range(MAX_GUESSES):
+        draw_board(b)
+        while True:
+            s = input("Please guess a sequence of colors from {0}: "\
+                       .format(' '.join(list(COLOR_NUM_MAP.keys())[:NUM_COLORS])))
+            if 'q' in s:
+                sys.exit(0)
+            if is_valid_input(s):
+                break
+            print("Please fix your sequence")
+
+        guess = [COLOR_NUM_MAP[c] for c in [c.upper() for c in s.split(' ')]]
+        score = score_guess(guess, t)
+        if all([x == 2 for x in score ]):
+            print("You've won!!!")
+            sys.exit(0)    
+        b.append((guess, score))
+        os.system('clear') 
+
+         
 if __name__ == '__main__':
+    main()
+    """
     t = generate_target()
     b = []
     for i in range(7):
@@ -74,4 +112,4 @@ if __name__ == '__main__':
     draw_board(b)
     input()
     draw_board([(t,[2,2,2,2])])
-
+    """
