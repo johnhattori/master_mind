@@ -11,7 +11,6 @@ def generate_target(guess_size=4, num_color=6):
     target = []
     for guess in range(guess_size):
         color = random.randint(0, num_color-1)
-        # color = random.choice(guess_size)
         target.append(color)
     
     return target
@@ -26,7 +25,7 @@ def score_guess(guess, target):
             score[index] = 2
 
     for index, color in enumerate(guess):
-        if target_map[color] > 0 and score[index] == 0:
+        if target_map[color] > 0 and score[index] != 2:
             target_map[color] -= 1
             score[index] = 1
     
@@ -37,12 +36,12 @@ if __name__ == '__main__':
     target = generate_target(GUESS_SIZE, NUM_COLORS)
     guess = generate_target(GUESS_SIZE, NUM_COLORS)
     score = score_guess(guess, target)
-    print("%s\n%s\n%s\n" % (target, guess, score))
+    print("{0}\n{1}\n{2}\n".format(target, guess, score))
     
     target = ['y', 'b', 'y', 'b']
     guess = ['y', 'y', 'y', 'b']
     score = score_guess(guess, target)
-    print("%s\n%s\n%s\n" % (target, guess, score))
+    print("{0}\n{1}\n{2}\n".format(target, guess, score))
 
 
     target = ['r', 'b', 'y', 'b']
