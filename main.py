@@ -89,11 +89,12 @@ def main():
 
         guess = [COLOR_NUM_MAP[c] for c in [c.upper() for c in s.split(' ')]]
         score = score_guess(guess, t)
-        if all([x == 2 for x in score ]):
+        if all([x == 2 for x in score]):
             print("You've won!!!")
             sys.exit(0)    
         b.append((guess, score))
         os.system('clear') 
+    print("Loooser!!!")
 
          
 if __name__ == '__main__':
