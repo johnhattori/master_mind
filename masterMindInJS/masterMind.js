@@ -1,4 +1,3 @@
-
 var GUESS_SIZE = 4;
 var NUM_COLORS = 6;
 var MAX_GUESSES = 12;
@@ -12,7 +11,7 @@ var NUM_COLOR_MAP = {0: 'Y',
 
 // generate opposite object mapping
 
-var COLOR_NUM_MAP = { };
+var COLOR_NUM_MAP = {};
 
 for(var key in NUM_COLOR_MAP) {
     COLOR_NUM_MAP[NUM_COLOR_MAP[key]] = key;
@@ -58,24 +57,44 @@ var score_guess = function(guess, target) {
             score[index] = 1;
         } 
     });
-    console.log(score);
+    //console.log(score);
 
 
 }
-console.log(newTarget);
+//console.log(newTarget);
 score_guess([1,2,3,4], newTarget);
 
 /* draw board as an array of objects containing guess and score
-    ex. var row = {guess: [], score: []};
-        board = [row]; 
-        board = [guess: [0, 0, 2, 5], score: [2, 2, 1, 0]];
+    ex. var row = [[<guess>], [<score>]]
+        board = [row, row row]; 
+        board = [[[0, 0, 2, 5], [2, 2, 1, 0]], [[1, 3, 4, 3], [1, 1, 0 ,0]]];
 
         r r b y | b b w -
 */
 
 var draw_board = function(board) {
     var to_print = "";
-    var guess_string =  guess.map(function(num) {
-                            return NUM_COLOR_MAP[nun];
-                        }).join(" ");  
+    board.forEach(function(row) {
+        var guest = [];
+        var score = [];
+        for (var i = 0; i < row[0].length; i++) {
+            guest.push(NUM_COLOR_MAP[row[0][i]]);
+        }
+        for (var j = 0; j < row[1].length; j++)
+            score.push(PEGS[row[1][j]]);
+        console.log(score);
+        to_print += guest.join(' ') + ' | ' + score.join(' ') + '\n';
+    });
+    return to_print;
 };
+
+// var board = [
+//     [
+//         [0, 0, 2, 5], [0, 2, 1, 0]
+//     ], 
+//     [
+//         [4, 3, 4, 3], [2, 1, 0 ,0]
+//     ]
+// ];
+// //board = [1];
+// console.log(draw_board(board));
