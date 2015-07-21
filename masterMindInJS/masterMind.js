@@ -98,3 +98,24 @@ var draw_board = function(board) {
 // ];
 // //board = [1];
 // console.log(draw_board(board));
+
+var is_valid_input = function(s) {
+  var colors = s.match(/\S+/g);
+  for(var i = 0; i < colors.length; i++) {
+    colors[i] = colors[i].toUpperCase();
+    if(!(colors[i] in COLOR_NUM_MAP)) {
+      return false;
+    } 
+  }
+  if(colors.length !== GUESS_SIZE)
+    return false;
+  return true;
+
+};
+is_valid_input("y b  w    p");
+
+
+
+
+
+
