@@ -10,7 +10,6 @@ var NUM_COLOR_MAP = {0: 'Y',
                  5: 'R'};
 
 // generate opposite object mapping
-
 var COLOR_NUM_MAP = {};
 
 for(var key in NUM_COLOR_MAP) {
@@ -20,7 +19,7 @@ for(var key in NUM_COLOR_MAP) {
 var PEGS = ['-', 'w', 'b'];
 
 // Create a random target combination 
-var target = function(guess_size, num_color) {
+var generate_target = function(guess_size, num_color) {
     var target = [];
     for(var i = 0; i < guess_size; i++) {
         var color = Math.floor(Math.random() * num_color);
@@ -29,7 +28,7 @@ var target = function(guess_size, num_color) {
     return target;
 };
 // invoke newTarget
-var newTarget = target(GUESS_SIZE, NUM_COLORS);
+var newTarget = generate_target(GUESS_SIZE, NUM_COLORS);
 
 // if guess right color, right place, then score = 2
 // if guess right color, wrong place, then score = 1 
@@ -110,9 +109,24 @@ var is_valid_input = function(s) {
   if(colors.length !== GUESS_SIZE)
     return false;
   return true;
-
 };
-is_valid_input("y b  w    p");
+// console.log(is_valid_input("b w p z"));
+
+// run program
+var main = function() {
+  var t = generate_target(); 
+  var b = [];
+  for(var i =0; i < MAX_GUESSES; i++){
+    draw_board(b);
+    while(true) {
+        print("Guess a sequence of four color from (or q to stop):")
+        var s = readline();
+        if(s === 'q') {
+            return;
+        }
+    }
+  }
+}
 
 
 

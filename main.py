@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
 
 import random
 import collections
@@ -71,7 +71,7 @@ def is_valid_input(s):
     for c in colors:
         if c not in allowed_colors: 
             return False
-    return True
+    return True 
 
 def main():
     t = generate_target()
